@@ -16,7 +16,7 @@
    - Arraste o nó para o fluxo e configure a **Serial Port** em que o Arduino está conectado (por exemplo, `COM5`).
    - Defina o **Baud Rate** para `9600`.
 
-   **Configuração Serial Out**<img src="assets/img/serial_out.PNG">
+   **Configuração Serial Out**<img src="assets/img/serial_out.png">
 
 3. **Adicionar os botões para controlar o LED**:
    - Procure pelo nó `button` e adicione dois botões (um para **ligar** o LED e outro para **desligar**).
@@ -24,12 +24,12 @@
    
    Para configurar o **Label** do botão, você pode colocar algo como **"Ligar"** no primeiro e **"Desligar"** no segundo.
 
-   **Configuração dos Botões**<img src="assets/img/button.PNG">
+   **Configuração dos Botões**<img src="assets/img/button.png">
 
 ### Estrutura Final do Fluxo
 
 O fluxo completo no **Node-RED** deve se parecer com isso:
-<img src="assets/img/flow.PNG">
+<img src="assets/img/flow.png">
 
 4. **Configuração do Dashboard**:
    - Para acessar o **dashboard**, clique no ícone no canto superior direito (abaixo de **Deploy**), em seguida, clique em **Dashboard**.
@@ -38,7 +38,7 @@ O fluxo completo no **Node-RED** deve se parecer com isso:
 
    **Acessando o Dashboard**
    
-   <img src="assets/img/dashboard.PNG">
+   <img src="assets/img/dashboard.png">
 
 ## Adicionando Conexão com MQTT
 
@@ -48,22 +48,22 @@ O fluxo completo no **Node-RED** deve se parecer com isso:
    - Clique no lápis no nó `mqtt-in` para configurar a conexão com o broker MQTT.
    - Configure o **Servidor** para `mqtt-dashboard.com` na porta `1883`, ou qualquer outro servidor MQTT que você tenha acesso.
 
-   **Configuração do MQTT**<img src="assets/img/mqtt_in_server.PNG">
+   **Configuração do MQTT**<img src="assets/img/mqtt_in_server.png">
 
 6. **Configuração do Tópico MQTT**:
    - No nó `mqtt-in`, configure o **Tópico** como, por exemplo, `3esr/wesley/led`. Esse será o tópico em que o Node-RED vai escutar para controlar o LED.
    - No **Publish** do HiveMQ (explicado mais abaixo), você usará esse tópico para enviar as mensagens.
 
-   **Configuração do Tópico MQTT**<img src="assets/img/mqtt_in_topic.PNG">
+   **Configuração do Tópico MQTT**<img src="assets/img/mqtt_in_topic.png">
 
 ## Testando a Conexão MQTT com HiveMQ
 
 7. **Usar o WebSocket Client do HiveMQ**:
-   - Abra o navegador e acesse o **HiveMQ WebSocket Client**<img src="assets/img/HiveMQ.PNG">
+   - Abra o navegador e acesse o **HiveMQ WebSocket Client**<img src="assets/img/HiveMQ.png">
 
    
    - Clique em **Connect** sem alterar nenhuma configuração.
    - Após conectar, vá em **Publish** e insira o **Tópico** definido anteriormente (`3esr/wesley/led`) e a mensagem que você deseja enviar (por exemplo, `1` para ligar e `0` para desligar o LED).
    - Clique em **Publish** para enviar a mensagem.
 
-   **Publicando no HiveMQ**<img src="assets/img/HiveMQ_publish.PNG">
+   **Publicando no HiveMQ**<img src="assets/img/HiveMQ_publish.png">
