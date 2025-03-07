@@ -4,7 +4,7 @@ import serial
 import time
 
 # Configurar a porta serial (ajuste para a porta correta do seu Arduino)
-arduino = serial.Serial('COM6', 9600, timeout=1)
+arduino = serial.Serial('COM3', 9600, timeout=1)
 time.sleep(2)  # Aguarda a inicialização da conexão serial
 
 # Inicializa o MediaPipe Hands
@@ -13,8 +13,8 @@ hands = mp_hands.Hands()
 mp_draw = mp.solutions.drawing_utils
 
 # Abrir um vídeo MP4
-video_path = "video.mp4"  # Substitua pelo caminho do seu vídeo
-cap = cv2.VideoCapture(0)
+video_path = "./assets/vdo/MovimentacaoServo.mp4"  # Substitua pelo caminho do seu vídeo
+cap = cv2.VideoCapture(video_path)
 
 while cap.isOpened():
     ret, frame = cap.read()
