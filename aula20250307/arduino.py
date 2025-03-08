@@ -2,6 +2,8 @@ import cv2
 import mediapipe as mp
 import serial
 import time
+import os
+
 
 # Configurar a porta serial (ajuste para a porta correta do seu Arduino)
 arduino = serial.Serial('COM3', 9600, timeout=1)
@@ -13,8 +15,14 @@ hands = mp_hands.Hands()
 mp_draw = mp.solutions.drawing_utils
 
 # Abrir um vídeo MP4
-video_path = "./assets/vdo/MovimentacaoServo.mp4"  # Substitua pelo caminho do seu vídeo
+video_path = os.path.join(os.getcwd(), 'aula20250307', 'assets', 'vdo', 'MovimentacaoServo.mp4')
+
+print("Caminho do vídeo:", video_path)
+
 cap = cv2.VideoCapture(video_path)
+if not cap.isOpened():
+    print(f"Erro ao abrir o vídeo: {video_path}")
+    exit()
 
 while cap.isOpened():
     ret, frame = cap.read()
