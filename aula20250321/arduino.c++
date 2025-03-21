@@ -22,13 +22,19 @@ void loop() {
 
         digitalWrite(Greenled, HIGH);
         digitalWrite(Redled, LOW);
+        digitalWrite(Yellowled, LOW);
+
+    } else if (comando == 'Y'){
+
+        digitalWrite(Greenled, LOW);
+        digitalWrite(Redled, LOW);
         digitalWrite(Yellowled, HIGH);
 
     } else if (comando == 'R'){
 
         digitalWrite(Greenled, LOW);
         digitalWrite(Redled, HIGH);
-        digitalWrite(Yellowled, HIGH);
+        digitalWrite(Yellowled, LOW);
 
     }
   }

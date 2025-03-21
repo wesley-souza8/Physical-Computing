@@ -5,7 +5,7 @@ import time
 import os                        # Usado para dar tempo de inicializar o Arduino
 
 # Inicia conexão com o Arduino (ajuste a porta conforme necessário)
-arduino = serial.Serial('COM4', 9600, timeout=1)
+arduino = serial.Serial('COM5', 9600, timeout=1)
 time.sleep(2)  # Aguarda o Arduino iniciar
 
 # Inicializa o detector de malha facial
@@ -22,8 +22,8 @@ piscadas = 0
 frames_fechado = 0
 
 # Limiar com histerese:
-LIMIAR_FECHAR = 0.38    # Se EAR cair abaixo disso, olho considerado fechado
-LIMIAR_ABRIR = 0.42     # Se EAR subir acima disso, olho considerado aberto
+LIMIAR_FECHAR = 0.08    # Se EAR cair abaixo disso, olho considerado fechado
+LIMIAR_ABRIR = 0.13     # Se EAR subir acima disso, olho considerado aberto
 LIMIAR_COCHILO = 30     # Número de frames com olho fechado = cochilo
 
 while True:
@@ -63,7 +63,7 @@ while True:
 
             if frames_fechado == 3:
                 piscadas += 1
-                arduino.write(b'G')  # Piscada = LED verde (normal)
+                arduino.write(b'Y')  # Piscada = LED verde (normal)
 
             elif frames_fechado > LIMIAR_COCHILO:
                 arduino.write(b'R')  # Cochilo detectado = LED vermelho + buzzer
