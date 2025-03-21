@@ -38,6 +38,7 @@ pip install notebook
 pip install pyserial  # Integração do Arduino com Python
 pip install mediapipe
 pip install --upgrade mediapipe opencv-python numpy
+pip install matplotlib opencv-python notebook pyserial mediapipe
 ```
 
 ## 4. Componentes Usados no Circuito
