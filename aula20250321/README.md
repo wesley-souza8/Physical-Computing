@@ -33,7 +33,7 @@ Os seguintes componentes são utilizados no projeto:
 
 O circuito montado no SimulIDE ficará assim:
 
-![Circuito no SimulIDE](/aula20250321/assets/img/circuito.png)
+![Circuito](/aula20250321/assets/img/circuito.png)
 
 ### **Configuração da Porta Serial no Código**
 No arquivo **face.py**, edite a linha **8** para corresponder porta informada pelo arduino IDE (exemplo: **COM5**):
@@ -88,6 +88,9 @@ elif ear > LIMIAR_ABRIR:
     ```sh
     python face.py
     ```
+
+2. Vídeo de demonstração
+![Demonstração](/aula20250321/assets/vdi/demonstracao.mp4)
 
 ## 5. Observações Finais
 
