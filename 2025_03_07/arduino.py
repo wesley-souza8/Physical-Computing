@@ -15,7 +15,7 @@ hands = mp_hands.Hands()
 mp_draw = mp.solutions.drawing_utils
 
 # Abrir um vídeo MP4
-video_path = os.path.join(os.getcwd(), 'aula20250307', 'assets', 'vid', 'MovimentacaoServo.mp4')
+video_path = os.path.join(os.getcwd(), '2025_03_07', 'assets', 'vid', 'MovimentacaoServo.mp4')
 
 print("Caminho do vídeo:", video_path)
 

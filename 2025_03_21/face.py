@@ -13,7 +13,7 @@ mp_face = mp.solutions.face_mesh
 face_mesh = mp_face.FaceMesh(max_num_faces=1)
 mp_draw = mp.solutions.drawing_utils
 
-video_path = os.path.join(os.getcwd(), 'aula20250321', 'assets', 'vid', 'selfie.mp4')
+video_path = os.path.join(os.getcwd(), '2025_03_21', 'assets', 'vid', 'selfie.mp4')
 
 cap = cv2.VideoCapture(video_path)  # Usa o video
 

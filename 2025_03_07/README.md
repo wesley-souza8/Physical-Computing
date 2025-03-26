@@ -4,7 +4,7 @@
 
 Este projeto utiliza o **MediaPipe** para reconhecimento de mãos e controle de um **servo motor** via **Arduino**. O circuito pode ser simulado no **SimulIDE** e requer a configuração de portas seriais virtuais utilizando o **com0com**.
 
-![Exemplo de Reconhecimento de Mãos no MediaPipe](/aula20250307/assets/img/MediaPipe.png)
+![Exemplo de Reconhecimento de Mãos no MediaPipe](/2025_03_07/assets/img/MediaPipe.png)
 
 ---
 
@@ -24,7 +24,7 @@ Para testar o **MediaPipe**:
 ### **Se estiver usando os computadores da FIAP:**
 
 1. Abra o **Anaconda Navigator**.
-![ANACONDA NAVIGATOR](/aula20250307/assets/img/AnacondaNavigator.png)
+![ANACONDA NAVIGATOR](/2025_03_07/assets/img/AnacondaNavigator.png)
 2. No **CMD.exe Prompt**, execute os seguintes comandos:
 
 ### **Se estiver no seu próprio computador:**
@@ -51,7 +51,7 @@ Os seguintes componentes são utilizados no projeto:
 
 O circuito montado no SimulIDE ficará assim:
 
-![Circuito no SimulIDE](/aula20250307/assets/img/SimulIDE.png)
+![Circuito no SimulIDE](/2025_03_07/assets/img/SimulIDE.png)
 
 ## 5. Configuração do SimulIDE
 
@@ -59,11 +59,11 @@ Para importar o firmware **.hex** no SimulIDE, siga os passos abaixo:
 
 1. No **Arduino IDE**, vá em **Sketch** > **Export Compiled Binary**.
 
-   ![Exportar Compiled Binary](/aula20250307/assets/img/compilado.png)
+   ![Exportar Compiled Binary](/2025_03_07/assets/img/compilado.png)
 
 2. No **SimulIDE**, clique com o botão direito sobre o **Arduino Uno**. Selecione **mega328-109** > **Carregar Firmware**.
 
-   ![Carregar Firmware](/aula20250307/assets/img/Fimware.png)
+   ![Carregar Firmware](/2025_03_07/assets/img/Fimware.png)
 
 ## 6. Configuração das Portas Seriais Virtuais
 

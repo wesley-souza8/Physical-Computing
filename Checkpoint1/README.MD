@@ -1,7 +1,7 @@
 # Projeto Checkpoint 1
 
 ## Integrantes
-- Eduaro Akira Murata - 98713
+- Eduardo Akira Murata - 98713
 - Wesley Souza de Oliveira - 97874
 - Pedro Henrique Moraes - 98804
 

@@ -3,7 +3,7 @@
 ### **Se estiver usando os computadores da FIAP:**
 
 1. Abra o **Anaconda Navigator**.
-![ANACONDA NAVIGATOR](/aula20250307/assets/img/AnacondaNavigator.png)
+![ANACONDA NAVIGATOR](/2025_03_07/assets/img/AnacondaNavigator.png)
 2. No **CMD.exe Prompt**, execute os seguintes comandos:
 
 ### **Se estiver no seu próprio computador:**
@@ -33,7 +33,7 @@ Os seguintes componentes são utilizados no projeto:
 
 O circuito montado no SimulIDE ficará assim:
 
-![Circuito](/aula20250321/assets/img/circuito.png)
+![Circuito](/2025_03_21/assets/img/circuito.png)
 
 ### **Configuração da Porta Serial no Código**
 No arquivo **face.py**, edite a linha **8** para corresponder porta informada pelo arduino IDE (exemplo: **COM5**):
@@ -90,7 +90,7 @@ elif ear > LIMIAR_ABRIR:
     ```
 
 2. Vídeo de demonstração
-![Demonstração](/aula20250321/assets/vdi/demonstracao.mp4)
+![Demonstração](/2025_03_21/assets/vdi/demonstracao.mp4)
 
 ## 5. Observações Finais
 
