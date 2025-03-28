@@ -1,12 +1,15 @@
 import cv2                          # Biblioteca para vídeo e imagens
 import mediapipe as mp              # Biblioteca do Google para reconhecimento corporal
 import numpy as np
+import serial
 import os                  # Para cálculos matemáticos (vetores e ângulos)
 
 # Inicializa o modelo de detecção de pose
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 mp_draw = mp.solutions.drawing_utils  # Para desenhar na tela
+
+arduino = serial.Serial('COM5', 9600, timeout=1)
 
 # Contador de repetições
 contador = 0
@@ -58,6 +61,9 @@ while True:
         if angulo < 40 and fase == 'descendo':
             fase = 'subindo'
             contador += 1
+
+        if contador == 12:
+            arduino.write(b'G')        
 
         # Exibe o número de repetições
         cv2.putText(frame, f"Repeticoes: {contador}", (10, 30),

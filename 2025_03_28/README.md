@@ -3,7 +3,7 @@
 ### **Se estiver usando os computadores da FIAP:**
 
 1. Abra o **Anaconda Navigator**.
-![ANACONDA NAVIGATOR](/2025_03_07/assets/img/AnacondaNavigator.png)
+![ANACONDA NAVIGATOR](/2025_03_28/assets/img/anacondaNavigator.png)
 2. No **CMD.exe Prompt**, execute os seguintes comandos:
 
 ### **Se estiver no seu próprio computador:**
@@ -27,21 +27,8 @@ Os seguintes componentes são utilizados no projeto:
 
 - **Arduino Uno**
 - **Board**
-- **Led Amarelo**
 - **Led Verde**
-- **Led Vermelho**
-- **3 Resistores**
-
-O circuito montado no SimulIDE ficará assim:
-
-![Circuito](/2025_03_21/assets/img/circuito.png)
-
-### **Configuração da Porta Serial no Código**
-No arquivo **face.py**, edite a linha **8** para corresponder porta informada pelo arduino IDE (exemplo: **COM5**):
-
-```python
-arduino = serial.Serial('COM5', 9600, timeout=1)
-```
+- **1 Resistor**
 
 ## 3. Usando Webcam ou MP4
 
