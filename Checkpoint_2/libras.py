@@ -5,7 +5,7 @@ import os
 
 # Menu de boas-vindas
 print("============================")
-print("  RECONHECIMENTO DE VOGAIS ")
+print("  RECONHECIMENTO DE VOGAIS  ")
 print("        EM LIBRAS")
 print("============================")
 print("[1] Usar WEBCAM")
@@ -20,7 +20,7 @@ mp_draw = mp.solutions.drawing_utils
 if opcao == '1':
     cap = cv2.VideoCapture(0)
 elif opcao == '2':
-    video_path = os.path.join(os.getcwd(),'Checkpoint_2', 'assets', 'video', 'mao_direita.mp4')
+    video_path = os.path.join(os.getcwd(), 'assets', 'video', 'mao_direita.mp4')
     print("Caminho do vídeo:", video_path)
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -33,7 +33,7 @@ else:
 # Função para identificar as vogais em Libras baseado na posição dos dedos
 def detectar_vogal(landmarks):
     def is_polegar_open(finger_tip, finger_mcp):
-        return finger_tip.x < finger_mcp.x  # Para mão direita (mude para < se usar mão esquerda)
+        return finger_tip.x > finger_mcp.x  # Para mão direita (mude para < se usar mão esquerda)
 
     def is_finger_up(finger_tip, finger_mcp):
         return finger_tip.y < finger_mcp.y
@@ -55,7 +55,7 @@ def detectar_vogal(landmarks):
     elif indicador_up and medio_up and not anelar_up and not mindinho_up and not polegar_up:
         return 'U'
     else:
-        return "Não identificado"
+        return "Nao identificado"
 
 while cap.isOpened():
     ret, frame = cap.read()
