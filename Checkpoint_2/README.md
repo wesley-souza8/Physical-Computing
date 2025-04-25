@@ -1,133 +1,104 @@
-# Guia de Instalação e Execução do Projeto
+
+# 📚 Guia de Instalação e Execução do Projeto
+
+## OWNER
+
+- Deivison Pertel - RM 550803
+- Eduardo Akira Murata - RM 98713
+- Wesley Souza de Oliveira - RM 97874
 
 ## 1. Introdução
 
-Este projeto utiliza o **MediaPipe** para reconhecimento de mãos e controle de um **servo motor** via **Arduino**. O circuito pode ser simulado no **SimulIDE** e requer a configuração de portas seriais virtuais utilizando o **com0com**.
+Este projeto utiliza o **MediaPipe** e **OpenCV** para **detecção de vogais em Libras** através da análise da posição dos dedos da mão.
 
 ![Exemplo de Reconhecimento de Mãos no MediaPipe](assets/img/MediaPipe.png)
 
----
-
-## 2. Teste do MediaPipe
-
-Para testar o **MediaPipe**:
-
-1. No Google, pesquise **MediaPipe** e acesse o site oficial.
-2. No menu esquerdo, selecione **Detecção de Objetos** > **Visão Geral**.
-3. Clique em **Testar**.
-4. O ambiente de teste permitirá visualizar o reconhecimento de mãos.
+Também disponibilizamos um vídeo de **demonstração e explicação** do projeto:  
+- 📂 O vídeo está localizado em `assets/video/apresentacao.mp4`
+- 📺 Você também pode assistir diretamente pelo YouTube: [Assista aqui](https://youtu.be/ED3tPcmcSwM)
 
 ---
 
-## 3. Instalação das Bibliotecas Necessárias
+## 2. Instalação das Bibliotecas Necessárias
 
-### **Se estiver usando os computadores da FIAP:**
-
-1. Abra o **Anaconda Navigator**.
-![ANACONDA NAVIGATOR](assets/img/AnacondaNavigator.png)
-2. No **CMD.exe Prompt**, execute os seguintes comandos:
-
-### **Se estiver no seu próprio computador:**
-
-No terminal, execute:
+No terminal (CMD, Terminal ou Anaconda Prompt), execute os seguintes comandos para instalar as bibliotecas necessárias:
 
 ```sh
 pip install opencv-python
-pip install matplotlib
-pip install notebook
-pip install pyserial  # Integração do Arduino com Python
 pip install mediapipe
-pip install --upgrade mediapipe opencv-python numpy
-pip install matplotlib opencv-python notebook pyserial mediapipe
 ```
 
-## 4. Componentes Usados no Circuito
+Essas duas bibliotecas são suficientes para executar o projeto.
 
-Os seguintes componentes são utilizados no projeto:
+---
 
-- **Arduino Uno**
-- **Porta Serial**
+## 3. Estrutura do Projeto
 
-O circuito montado no SimulIDE ficará assim:
+- **assets/**  
+  Pasta que contém vídeos e imagens utilizadas no projeto:
+  - `video/mao_direita.mp4` — vídeo de exemplo para reconhecimento.
+  - `video/apresentacao.mp4` — vídeo de apresentação do projeto.
+  - `img/MediaPipe.png` — imagem ilustrativa.
 
-![Circuito no SimulIDE](assets/img/SimulIDE.png)
+- **libras.py**  
+  Código principal que faz a detecção das vogais.
 
-## 5. Configuração do SimulIDE
+---
 
-Para importar o firmware **.hex** no SimulIDE, siga os passos abaixo:
+## 4. Funcionamento do Código
 
-1. No **Arduino IDE**, vá em **Sketch** > **Export Compiled Binary**.
+O código principal (`libras.py`) detecta a configuração dos dedos da mão para identificar vogais específicas:  
+**A**, **E**, **I**, **O** ou **U**.
 
-   ![Exportar Compiled Binary](assets/img/compilado.png)
+Ele oferece duas opções de entrada:
+- 📷 **Usar Webcam** em tempo real;
+- 🎥 **Usar Vídeo MP4** pré-gravado.
 
-2. No **SimulIDE**, clique com o botão direito sobre o **Arduino Uno**. Selecione **mega328-109** > **Carregar Firmware**.
+Você seleciona a opção ao rodar o código.
 
-   ![Carregar Firmware](assets/img/Fimware.png)
+---
 
-## 6. Configuração das Portas Seriais Virtuais
+## 5. Como Rodar o Projeto
 
-Como estamos utilizando o **SimulIDE** em vez de um Arduino físico, é necessário usar o **com0com** para emular portas seriais.
+### 5.1. Passos:
 
-### **Passos para configurar o com0com:**
-1. Abra o **com0com** e verifique quais portas estão sendo utilizadas.
-2. No exemplo abaixo, as portas **COM3** e **COM4** estão sendo usadas:
+1. Certifique-se de que você tenha o Python instalado (versão 3.7 ou superior).
+2. Instale as bibliotecas necessárias conforme mostrado no item 2.
+3. Organize o arquivo de vídeo (`mao_direita.mp4`) dentro da pasta `assets/video/`.
+4. Execute o arquivo `libras.py`:
 
-   ![Configuração com0com](assets/img/com0com1.png)
-
-### **Configuração da Porta Serial no SimulIDE:**
-1. Clique com o botão direito na **Serial Port** e selecione **Propriedades**.
-   
-   ![Propriedades da Serial Port](assets/img/SerialPort.png)
-
-2. Em **Nome da Porta**, insira **uma das portas informadas pelo com0com** (exemplo: **COM4**).
-
-   ![Nome da Porta](assets/img/nomePorta.png)
-
-### **Configuração da Porta Serial no Código**
-No arquivo **libras.py**, edite a linha **9** para corresponder à outra porta informada pelo com0com (exemplo: **COM3**):
-
-```python
-arduino = serial.Serial('COM3', 9600, timeout=1)
+```sh
+python libras.py
 ```
 
-## 7. Usando Webcam ou MP4
+5. Escolha uma das opções:
+    - Digitar `1` para usar a Webcam
+    - Digitar `2` para usar o vídeo MP4
 
-O código principal é **libras.py**.
+---
 
-Existem duas formas de rodar o código, dependendo da entrada de vídeo desejada.
+## 6. Lógica de Reconhecimento
 
-### **1. Usar a Webcam**
-Se deseja utilizar a webcam para detecção, altere a linha **22** do código **libras.py**, substituindo `video_path` por `0`:
+O algoritmo compara a posição dos dedos:
+- **Polegar**, **Indicador**, **Médio**, **Anelar** e **Mindinho**.
+- Baseado na posição relativa (se estão levantados ou abaixados), identifica a vogal correspondente.
 
-```python
-cap = cv2.VideoCapture(0)
-```
+As vogais reconhecidas são exibidas na tela com o OpenCV (`cv2.putText`) e também impressas no console (`print`).
 
-### **2. Usar um Vídeo MP4**
-Caso prefira utilizar um vídeo pré-gravado, mantenha a variável `video_path`
+---
 
-```python
-cap = cv2.VideoCapture(video_path)
-```
+## 7. Observações Importantes
 
-## 8. Executando o Código
-O código detecta a posição do dedo indicador e envia comandos para o Arduino via porta serial. Se o dedo estiver acima do ponto médio da tela, o motor será ajustado para 90°; se estiver abaixo, será ajustado para 180°.
+- Para usar **Webcam**, certifique-se de que a câmera esteja funcionando e liberada para o Python.
+- Para usar **vídeo MP4**, confirme se o caminho e o nome do arquivo estão corretos dentro da pasta `assets/video/`.
+- Para a **mão esquerda**, é necessário ajustar o código na função `is_polegar_open` (trocar a comparação `>` para `<`).
 
-```python
-if index_finger_y < 0.5:  # Dedo levantado
-    arduino.write(b'1')  # Move para 90°
-else:  # Dedo abaixado
-    arduino.write(b'2')  # Move para 180°
-```
-1. Certifique-se de que o SimulIDE está configurado corretamente e que as portas seriais foram ajustadas.
+---
 
-2. Execute o código libras.py no terminal:
-    ```sh
-    python libras.py
-    ```
-
-## 9. Observações Finais
-
-* Caso o vídeo não abra, verifique se o arquivo MovimentacaoServo.mp4 está localizado corretamente em assets/vdo/.
-* Para problemas com portas seriais, certifique-se de que com0com está configurado corretamente.
-* Para problemas com portas seriais, certifique-se de que com0com está configurado corretamente.
+# 📢 Resumo rápido:
+| Ação                         | Como Fazer                           |
+|-------------------------------|--------------------------------------|
+| Instalar bibliotecas          | `pip install opencv-python mediapipe` |
+| Executar o projeto            | `python libras.py`                   |
+| Escolher entrada de vídeo     | Digitar `1` (webcam) ou `2` (vídeo)   |
+| Assistir demonstração         | [Vídeo no YouTube](https://youtu.be/ED3tPcmcSwM) |
